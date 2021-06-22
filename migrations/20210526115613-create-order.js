@@ -23,6 +23,12 @@ module.exports = {
       rentalDate: {
         type: Sequelize.DATE
       },
+      movieTitle:{
+        type : Sequelize.STRING
+      },
+      posterMovie:{
+        type : Sequelize.STRING
+      },
       returnDate: {
         type: Sequelize.DATE
       },
