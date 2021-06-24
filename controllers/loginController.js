@@ -8,23 +8,26 @@ class LoginController {
     async validate(emailCheck,passwordCheck){
 
         let user = await userController.findByEmail(emailCheck);
+        if(user === null){
+            throw new Error(" Wrong password or email");
+        } 
 
         let password = user.password;
 
         let verificar = await bcryptjs.compare(passwordCheck,password);
 
         if(!verificar){
-            return new Error("El password o el email no coinciden");
-            
+               throw new Error(" Wrong password or email ");
+        } else { 
+
+            let payload = {
+                userId : user.id,
+                createdAt: new Date,
+                isAdmin : user.isAdmin
+            };
+            return jwt.sign(payload,secret); // SE CREA EL TOKEN
         }
-
-        let payload = {
-            userId : user.id,
-            createdAt: new Date,
-            isAdmin: user.isAdmin
-        };
-
-        return jwt.sign(payload,secret);
+        
 
     }
 }

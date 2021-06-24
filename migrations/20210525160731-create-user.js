@@ -53,6 +53,9 @@ module.exports = {
       dni: {
         type: Sequelize.STRING
       },
+      imgUser: {
+        type: Sequelize.STRING
+      },
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
