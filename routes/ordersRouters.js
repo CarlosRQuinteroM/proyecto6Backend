@@ -6,8 +6,9 @@ const admin = require('../middleware/admin')
 //API CRUD ORDES
 
 // See all orders
-router.get('/', admin, async (req, res) => {
+router.get('/',admin,  async (req, res) => {
     try{
+        
         res.json(await orderController.allOrders());
     }catch (err) {
         return res.status(500).json({
@@ -59,10 +60,10 @@ router.put('/', authenticate, async (req, res) => {
         });
     }
 });
-// Delete orders and users
-router.delete('/:id', admin, async (req, res) => {
+// Delete orders
+router.delete('/:id', authenticate, async (req, res) => {
     try {
-        const id = req.params.id;
+        const id = req.body.id;
         res.json(await orderController.deleteOrder(id));
     }catch (err) {
         return res.status(500).json({

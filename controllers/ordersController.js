@@ -10,9 +10,13 @@ class Pedido {
     return Order.findByPk(id);
   }
   async userOrder(idUser) {
-    return Order.findAll({
-      where: {idUser: idUser},
-    });
+    let res = await Order.findAll({where: {idUser: idUser},});
+    let prueba = res.length
+    if (prueba === 0){
+      return (
+        "vacio"
+      )
+    }else {return res}
   }
   async newOrder(body) {
     return Order.create(body);
