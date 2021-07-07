@@ -18,6 +18,7 @@
     "username": "b44f0208ae5271",
     "password": "e8d18dc6",
     "database": "heroku_c8097f51b8214c4",
+    "port":3306,
     "host": "eu-cdbr-west-01.cleardb.com",
     "dialect": "mysql"
   }
